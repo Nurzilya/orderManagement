@@ -1,4 +1,6 @@
 # Order Management API
+The Order Management API is built using Spring Boot to handle products, categories, orders, and payments 
+while enforcing business rules.
 
 ## Technologies Used
 - Spring Boot 3 (REST API, Security, JPA)
@@ -7,7 +9,6 @@
 - Springdoc OpenAPI (Swagger UI) (API Documentation)
 - JUnit, Mockito (Unit Testing)
 - Docker (Deployment)
-
 
 ## Features
  - Manage Orders (Create, Update, Cancel, Finish)
@@ -19,7 +20,6 @@
  - API Documentation with Swagger
  - H2 Database for Testing
  - Docker Support
-
 
 ## Setup
 1. Clone the repository
@@ -37,3 +37,16 @@ Role admin:
    password: fun123
 ```
 API endpoint example: `http://localhost:8080/api/orders`
+
+5. Access H2 Console: http://localhost:8080/h2-console
+```
+   API credentials:
+   username: admin
+   password: fun123
+
+   Database credentials:
+   JDBC URL: jdbc:h2:mem:testdb
+   Username: sa
+   Password: (leave empty)
+
+```
