@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -147,5 +148,9 @@ public class OrderService {
         }
 
         return orderRepository.save(order);
+    }
+
+    public Optional<Order> getOrderById(Long id) {
+        return orderRepository.findById(id);
     }
 }

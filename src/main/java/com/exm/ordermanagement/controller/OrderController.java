@@ -2,6 +2,7 @@ package com.exm.ordermanagement.controller;
 
 import com.exm.ordermanagement.dto.OrderRequestDTO;
 import com.exm.ordermanagement.dto.PaymentRequestDTO;
+import com.exm.ordermanagement.entity.Product;
 import com.exm.ordermanagement.service.OrderService;
 import com.exm.ordermanagement.entity.Order;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -25,6 +27,14 @@ public class OrderController {
     @Operation(summary = "Get all Orders", description = "Retrieves a list of all orders.")
     public ResponseEntity<List<Order>> getAllOrders() {
         return ResponseEntity.ok(orderService.getAllOrders());
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get order by ID", description = "Get order by ID")
+    public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
+        Optional<Order> order = orderService.getOrderById(id);
+        return order.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
